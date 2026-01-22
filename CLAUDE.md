@@ -3,10 +3,14 @@
 ## Project Overview
 Custom Next.js 14 website for Micah Reimer Films, a cinematography business based in Prescott, Arizona. Deployed to Cloudflare Pages.
 
+**Live Site:** https://mrfilms.pages.dev
+**GitHub:** https://github.com/mizarmedia/mrfilms
+
 ## Tech Stack
 - **Framework:** Next.js 14 (App Router)
 - **Styling:** Tailwind CSS
 - **Animations:** Framer Motion
+- **Contact Form:** Formspree
 - **Deployment:** Cloudflare Pages (static export)
 
 ## Architecture
@@ -26,14 +30,15 @@ organisms/   -> Navigation, Footer, HeroVideo, AboutSection, ServicesGrid, Testi
 
 ## Commands
 ```bash
-npm run dev          # Development server
-npm run build        # Production build (static export)
-npm run lint         # ESLint check
+npm run dev                                              # Development server
+npm run build                                            # Production build
+npx wrangler pages deploy out --project-name mrfilms    # Deploy to Cloudflare
 ```
 
 ## Deployment
-Configured for static export (`output: 'export'` in next.config.ts).
-Deploy to Cloudflare Pages via GitHub integration.
+1. Run `npm run build` to generate static files in `out/`
+2. Run `npx wrangler pages deploy out --project-name mrfilms --commit-dirty=true`
+3. Site will be live at https://mrfilms.pages.dev
 
 ## Color Palette (Cinematic Dark)
 ```css
@@ -49,13 +54,6 @@ Deploy to Cloudflare Pages via GitHub integration.
 - Display: Cormorant Garamond (headings)
 - Body: Inter (text)
 
-## Image Requirements
-All images need to be downloaded from the current Wix site and placed in:
-- `public/images/hero-bg.jpg` - Homepage hero background
-- `public/images/about/micah-portrait.jpg` - About section portrait
-- `public/images/portfolio/{category}/` - Portfolio thumbnails
-- `public/images/og-image.jpg` - Social sharing image
-
 ## Contact Info
 - Phone: (928) 733-9090
 - Email: contact@micahreimerfilms.com
@@ -63,9 +61,99 @@ All images need to be downloaded from the current Wix site and placed in:
 - YouTube: youtube.com/micahreimerfilms
 - Location: Prescott, Arizona
 
-## TODO
-- [ ] Download and add real images from current site
-- [ ] Replace placeholder YouTube IDs with real video IDs
-- [ ] Connect contact form to email service (Resend, Formspree, etc.)
-- [ ] Add real client logos to business page
-- [ ] Configure custom domain (micahreimerfilms.com)
+---
+
+## Completed
+- [x] Full website build with all 6 pages
+- [x] Mobile-responsive design with animations
+- [x] Contact form connected to Formspree
+- [x] Logo downloaded and integrated
+- [x] Deployed to Cloudflare Pages
+- [x] Portfolio cards show "Coming Soon" when no video
+
+## Remaining Tasks
+
+### 1. Replace Placeholder Images
+The Wix site loads images dynamically via JavaScript, so they couldn't be automatically downloaded. To replace placeholders:
+
+**Option A - Screenshot Method:**
+1. Visit each page on micahreimerfilms.com
+2. Right-click images → "Save image as..."
+3. Save to appropriate `public/images/portfolio/{category}/` folder
+
+**Option B - Browser DevTools:**
+1. Open micahreimerfilms.com in Chrome
+2. Open DevTools (F12) → Network tab
+3. Filter by "Img"
+4. Reload page and download images from the list
+
+**Required Images:**
+- `public/images/hero-bg.jpg` - Homepage hero (cinematic shot)
+- `public/images/about/micah-portrait.jpg` - Micah's portrait photo
+- `public/images/og-image.jpg` - Social sharing image (1200x630)
+- `public/images/portfolio/wedding/*.jpg` - Wedding portfolio thumbnails
+- `public/images/portfolio/business/*.jpg` - Business portfolio thumbnails
+- `public/images/portfolio/musicvideo/*.jpg` - Music video thumbnails
+- `public/images/portfolio/realestate/*.jpg` - Real estate thumbnails
+- `public/images/portfolio/international/*.jpg` - International thumbnails
+
+### 2. Add Real Video IDs
+Edit `src/lib/data/portfolio.ts` and add YouTube/Vimeo IDs:
+```typescript
+{
+  id: 'wedding-1',
+  title: 'Sarah & James',
+  thumbnail: '/images/portfolio/wedding/wedding-1.jpg',
+  youtubeId: 'REAL_YOUTUBE_ID_HERE',  // Add this line
+  category: 'wedding',
+}
+```
+
+### 3. Configure Custom Domain
+The domain needs to be added to Cloudflare:
+
+1. **Add domain to Cloudflare:**
+   - Go to Cloudflare Dashboard → Add Site
+   - Enter `micahreimerfilms.com`
+   - Update nameservers at current registrar
+
+2. **Connect to Pages:**
+   - Go to Cloudflare Pages → mrfilms → Custom domains
+   - Add `micahreimerfilms.com` and `www.micahreimerfilms.com`
+
+### 4. Update Formspree (Optional)
+Current Formspree endpoint: `https://formspree.io/f/xvgogpjw`
+
+To use a different endpoint or add to a Formspree project:
+1. Create account at formspree.io
+2. Create new form
+3. Update endpoint in `src/components/organisms/ContactForm.tsx`
+
+### 5. Add Client Logos (Business Page)
+1. Collect logos from business clients
+2. Add to `public/images/logos/`
+3. Update `src/app/business/page.tsx` to display real logos
+
+---
+
+## Project Structure
+```
+mrfilms/
+├── src/
+│   ├── app/
+│   │   ├── layout.tsx
+│   │   ├── page.tsx
+│   │   ├── wedding/page.tsx
+│   │   ├── business/page.tsx
+│   │   ├── musicvideo/page.tsx
+│   │   ├── realestate/page.tsx
+│   │   └── international/page.tsx
+│   ├── components/
+│   │   ├── atoms/
+│   │   ├── molecules/
+│   │   └── organisms/
+│   └── lib/data/
+├── public/images/
+├── next.config.ts
+└── package.json
+```

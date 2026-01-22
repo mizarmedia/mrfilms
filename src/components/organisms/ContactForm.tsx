@@ -30,12 +30,31 @@ export default function ContactForm({
     e.preventDefault();
     setStatus('submitting');
 
-    // Simulate form submission
-    // In production, you'd send this to your backend or email service
-    setTimeout(() => {
-      setStatus('success');
-      setFormData({ name: '', email: '', phone: '', service: '', message: '' });
-    }, 1000);
+    try {
+      const response = await fetch('https://formspree.io/f/xvgogpjw', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          service: formData.service,
+          message: formData.message,
+          _subject: `New inquiry from ${formData.name} - ${formData.service || 'General'}`,
+        }),
+      });
+
+      if (response.ok) {
+        setStatus('success');
+        setFormData({ name: '', email: '', phone: '', service: '', message: '' });
+      } else {
+        setStatus('error');
+      }
+    } catch {
+      setStatus('error');
+    }
   };
 
   const handleChange = (

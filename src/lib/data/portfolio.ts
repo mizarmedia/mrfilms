@@ -9,6 +9,7 @@ export interface PortfolioItem {
   category: string;
 }
 
+// Portfolio items - add youtubeId or vimeoId when real videos are available
 export const portfolioItems: PortfolioItem[] = [
   // Wedding
   {
@@ -16,7 +17,7 @@ export const portfolioItems: PortfolioItem[] = [
     title: 'Sarah & James',
     description: 'A beautiful outdoor ceremony in Sedona',
     thumbnail: '/images/portfolio/wedding/wedding-1.jpg',
-    youtubeId: 'dQw4w9WgXcQ', // Placeholder - replace with actual
+    // youtubeId: '', // Add real YouTube ID when available
     category: 'wedding',
   },
   {
@@ -24,7 +25,6 @@ export const portfolioItems: PortfolioItem[] = [
     title: 'Emily & Michael',
     description: 'Intimate vineyard wedding',
     thumbnail: '/images/portfolio/wedding/wedding-2.jpg',
-    youtubeId: 'dQw4w9WgXcQ',
     category: 'wedding',
   },
   {
@@ -32,7 +32,6 @@ export const portfolioItems: PortfolioItem[] = [
     title: 'Ashley & David',
     description: 'Mountain chapel ceremony',
     thumbnail: '/images/portfolio/wedding/wedding-3.jpg',
-    youtubeId: 'dQw4w9WgXcQ',
     category: 'wedding',
   },
   // Business
@@ -41,7 +40,6 @@ export const portfolioItems: PortfolioItem[] = [
     title: 'Trinity Christian School',
     description: 'Promotional video for school enrollment',
     thumbnail: '/images/portfolio/business/business-1.jpg',
-    youtubeId: 'dQw4w9WgXcQ',
     category: 'business',
   },
   {
@@ -49,7 +47,6 @@ export const portfolioItems: PortfolioItem[] = [
     title: 'Local Restaurant Commercial',
     description: 'TV commercial for local dining',
     thumbnail: '/images/portfolio/business/business-2.jpg',
-    youtubeId: 'dQw4w9WgXcQ',
     category: 'business',
   },
   // Music Video
@@ -58,7 +55,6 @@ export const portfolioItems: PortfolioItem[] = [
     title: 'Desert Dreams',
     description: 'Indie rock music video',
     thumbnail: '/images/portfolio/musicvideo/musicvideo-1.jpg',
-    youtubeId: 'dQw4w9WgXcQ',
     category: 'musicvideo',
   },
   {
@@ -66,7 +62,6 @@ export const portfolioItems: PortfolioItem[] = [
     title: 'City Lights',
     description: 'Hip-hop music video',
     thumbnail: '/images/portfolio/musicvideo/musicvideo-2.jpg',
-    youtubeId: 'dQw4w9WgXcQ',
     category: 'musicvideo',
   },
   // Real Estate
@@ -75,7 +70,6 @@ export const portfolioItems: PortfolioItem[] = [
     title: 'Luxury Mountain Home',
     description: 'Premium property tour',
     thumbnail: '/images/portfolio/realestate/realestate-1.jpg',
-    youtubeId: 'dQw4w9WgXcQ',
     category: 'realestate',
   },
   {
@@ -83,7 +77,6 @@ export const portfolioItems: PortfolioItem[] = [
     title: 'Modern Desert Oasis',
     description: 'Contemporary home showcase',
     thumbnail: '/images/portfolio/realestate/realestate-2.jpg',
-    youtubeId: 'dQw4w9WgXcQ',
     category: 'realestate',
   },
   // International
@@ -92,7 +85,6 @@ export const portfolioItems: PortfolioItem[] = [
     title: 'Gjakova, Kosova',
     description: 'Documentary project',
     thumbnail: '/images/portfolio/international/international-1.jpg',
-    youtubeId: 'dQw4w9WgXcQ',
     category: 'international',
   },
   {
@@ -100,7 +92,6 @@ export const portfolioItems: PortfolioItem[] = [
     title: 'Tamale, Ghana',
     description: 'Mission documentation',
     thumbnail: '/images/portfolio/international/international-2.jpg',
-    youtubeId: 'dQw4w9WgXcQ',
     category: 'international',
   },
 ];

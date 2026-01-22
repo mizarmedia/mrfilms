@@ -1,4 +1,17 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
-  <rect width="1920" height="1080" fill="#1a1a1e"/>
-  <text x="960" y="540" font-family="sans-serif" font-size="48" fill="#d4a843" text-anchor="middle" dominant-baseline="middle">Placeholder Image</text>
+  <defs>
+    <linearGradient id="bg-musicvideo" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0b"/>
+      <stop offset="50%" style="stop-color:#1a1a1e"/>
+      <stop offset="100%" style="stop-color:#0a0a0b"/>
+    </linearGradient>
+    <radialGradient id="glow-musicvideo" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:0.15"/>
+      <stop offset="100%" style="stop-color:#0a0a0b;stop-opacity:0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#bg-musicvideo)"/>
+  <ellipse cx="960" cy="540" rx="900" ry="500" fill="url(#glow-musicvideo)"/>
+  <text x="960" y="520" font-family="Georgia, serif" font-size="72" fill="#8b5cf6" text-anchor="middle" opacity="0.3">Music Videos</text>
+  <text x="960" y="600" font-family="sans-serif" font-size="24" fill="#a8a5a0" text-anchor="middle" opacity="0.5">Micah Reimer Films</text>
 </svg>

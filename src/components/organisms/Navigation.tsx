@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { navLinks } from '@/lib/data/contact';
 
@@ -38,9 +39,14 @@ export default function Navigation() {
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <Link href="/" className="flex items-center">
-              <span className="text-2xl font-display text-amber-500 tracking-wider">
-                MICAH REIMER FILMS
-              </span>
+              <Image
+                src="/images/logo/mrf-logo-white.png"
+                alt="Micah Reimer Films"
+                width={200}
+                height={50}
+                className="h-10 w-auto"
+                priority
+              />
             </Link>
 
             {/* Desktop Navigation */}
